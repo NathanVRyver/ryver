@@ -13,6 +13,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    export default {
+  data() {
+    return {
+      xp: 0
+    };
+  },
+  methods: {
+    handleSubmit(event) {
+      this.xp += 100; // Increase XP
+      event.target.submit(); // Submit the form
+    }
+  }
+}
+    </script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
     body {
@@ -113,14 +128,15 @@
       <section x-show="section === 'contact'" class="text-center">
         <h2 class="text-3xl mb-4">let's connect</h2>
         <p class="mb-4">got an interesting project or just want to chat??</p>
-        <form class="space-y-4" @submit.prevent="xp += 100">
-          <input type="text" placeholder="your name (or favorite anime character)" class="bg-gray-800 p-2 w-full" />
-          <input type="email" placeholder="email" class="bg-gray-800 p-2 w-full" />
-          <textarea placeholder="your message (bonus points if you have a case for me to crack :3)" class="bg-gray-800 p-2 w-full h-32"></textarea>
-          <button type="submit" class="bg-[#00ff00] text-black px-4 py-2 hover:bg-pink-500 transition-colors">
-            send
-          </button>
-        </form>
+      <form class="space-y-4" @submit="handleSubmit" action="https://formsubmit.co/tantaouisoftware@gmail.com" method="POST">
+  <input type="text" placeholder="your name (or favorite anime character)" class="bg-gray-800 p-2 w-full" />
+  <input type="email" placeholder="email" class="bg-gray-800 p-2 w-full" />
+  <textarea placeholder="your message (bonus points if you have a case for me to crack :3)" class="bg-gray-800 p-2 w-full h-32"></textarea>
+  <button type="submit" class="bg-[#00ff00] text-black px-4 py-2 hover:bg-pink-500 transition-colors">
+    send
+  </button>
+</form>
+
       </section>
 
       <section x-show="section === 'resources'" class="text-center">
