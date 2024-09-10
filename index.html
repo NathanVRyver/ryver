@@ -1,275 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="ryver" />
-    <meta property="og:description" content="building cool things." />
-    <meta property="og:image" content="/anime/jinwoo.jpg" />
-    <meta property="og:url" content="https://nathanryver.com" />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="/anime/favi.ico" type="image/x-icon" />
-    <title>ryver</title>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js"
-      defer
-    ></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-      export default {
-        data() {
-          return {
-            xp: 0,
-          };
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="ryver" />
+  <meta property="og:description" content="building cool things." />
+  <meta property="og:image" content="/anime/jinwoo.jpg" />
+  <meta property="og:url" content="https://nathanryver.com" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/anime/favi.ico" type="image/x-icon" />
+  <title>ryver</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    export default {
+      data() {
+        return {
+          xp: 0,
+        };
+      },
+      methods: {
+        handleSubmit(event) {
+          this.xp += 100;
+          event.target.submit();
         },
-        methods: {
-          handleSubmit(event) {
-            this.xp += 100;
-            event.target.submit();
-          },
-        },
-      };
-    </script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
-      body {
-        font-family: "IBM Plex Mono", monospace;
-        background-color: #0a0a0a;
-        color: #00ff00;
-      }
-      .hidden-message {
-        display: none;
-      }
-      .anime-container {
-        background-color: #1a1a1a;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        height: 200px;
-      }
-      .anime-container img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    </style>
-  </head>
-  <body class="bg-black">
-    <div
-      x-data="{ section: 'home', xp: 470 }"
-      class="container mx-auto px-4 py-8"
-    >
-      <header class="text-center mb-12 relative">
-        <div class="absolute top-0 right-0 flex space-x-4">
-          <a
-            href="https://nathanvryver.substack.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i data-lucide="book-open" class="w-6 h-6"></i>
-          </a>
-          <a
-            href="https://x.com/nathanryver"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i data-lucide="twitter" class="w-6 h-6"></i>
-          </a>
-        </div>
-        <h1 class="text-2xl mb-4">ryver.</h1>
-        <p>someone who loves building cool stuff</p>
-        <p class="text-xs italic">neovim btw</p>
-      </header>
+      },
+    };
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
 
-      <nav class="mb-12">
-        <ul class="flex justify-center space-x-4 flex-wrap">
-          <li>
-            <button
-              @click="section = 'home'"
-              :class="{ 'text-pink-500': section === 'home' }"
-              class="hover:text-pink-500 transition-colors"
-            >
-              home
-            </button>
-          </li>
-          <li>
-            <button
-              @click="section = 'skills'"
-              :class="{ 'text-pink-500': section === 'skills' }"
-              class="hover:text-pink-500 transition-colors"
-            >
-              skills
-            </button>
-          </li>
-          <li>
-            <button
-              @click="section = 'projects'"
-              :class="{ 'text-pink-500': section === 'projects' }"
-              class="hover:text-pink-500 transition-colors"
-            >
-              projects
-            </button>
-          </li>
-          <li>
-            <button
-              @click="section = 'resources'"
-              :class="{ 'text-pink-500': section === 'resources' }"
-              class="hover:text-pink-500 transition-colors"
-            >
-              resources
-            </button>
-          </li>
-          <li>
-            <button
-              @click="section = 'contact'"
-              :class="{ 'text-pink-500': section === 'contact' }"
-              class="hover:text-pink-500 transition-colors"
-            >
-              contact
-            </button>
-          </li>
-        </ul>
-      </nav>
+    body {
+      font-family: "IBM Plex Mono", monospace;
+      background-color: #0a0a0a;
+      color: #00ff00;
+    }
 
-      <main>
-        <section x-show="section === 'home'" class="text-center">
-          <h2 class="text-3xl mb-4">ようこそ (Yōkoso)</h2>
-          <p class="mb-4">
-            TypeScript と Go の熱狂的なファン、Python と Zig
-            も。機械学習に挑戦中
-          </p>
-          <p>カフェインをコードに変えていきます</p>
-        </section>
+    .hidden-message {
+      display: none;
+    }
 
-        <section x-show="section === 'skills'" class="text-center">
-          <h2 class="text-3xl mb-4">skill tree</h2>
-          <ul class="space-y-2">
-            <li>typescript: necessary evil =(</li>
-            <li>go: speed goes brrr</li>
-            <li>python: for ml, but screw the indentation errors</li>
-            <li>learning zig: peak programming</li>
-          </ul>
-        </section>
+    .anime-container {
+      background-color: #1a1a1a;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      height: 200px;
+    }
 
-        <section x-show="section === 'projects'" class="text-center">
-          <h2 class="text-3xl mb-4">active quests</h2>
-          <ul class="space-y-2">
-            <li>
-              - learning to teach machines how to think (to eventually get them
-              to think about thinking)
-            </li>
-            <li>
-              - crafting a life-gamification app (because reality needs better
-              stats overview)
-            </li>
-            <li>
-              - writing articles on logic & deductive reasoning (sherlock holmes
-              type shi)
-            </li>
-            <li class="mt-4">working at [redacted] (:3)</li>
-          </ul>
-        </section>
+    .anime-container img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
 
-        <section x-show="section === 'contact'" class="text-center">
-          <h2 class="text-3xl mb-4">let's connect</h2>
-          <p class="mb-4">got an interesting project or just want to chat??</p>
-          <form
-            class="space-y-4"
-            @submit="handleSubmit"
-            action="https://formsubmit.co/tantaouisoftware@gmail.com"
-            method="POST"
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="your name (or favorite anime character)"
-              class="bg-gray-800 p-2 w-full"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="email"
-              class="bg-gray-800 p-2 w-full"
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="your message (bonus points if you have a case for me to crack :3)"
-              class="bg-gray-800 p-2 w-full h-32"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              class="bg-[#00ff00] text-black px-4 py-2 hover:bg-pink-500 transition-colors"
-            >
-              send
-            </button>
-          </form>
-        </section>
+<body class="bg-black">
+  <div x-data="{ section: 'home', xp: 470 }" class="container mx-auto px-4 py-8">
+    <header class="text-center mb-12 relative">
+      <div class="absolute top-0 right-0 flex space-x-4">
+        <a href="https://nathanvryver.substack.com/" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="book-open" class="w-6 h-6"></i>
+        </a>
+        <a href="https://x.com/nathanryver" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="twitter" class="w-6 h-6"></i>
+        </a>
+      </div>
+      <h1 class="text-2xl mb-4">ryver.</h1>
+      <p>someone who loves building cool stuff</p>
+      <p class="text-xs italic">neovim btw</p>
+    </header>
 
-        <section x-show="section === 'resources'" class="text-center">
-          <h2 class="text-3xl mb-4">knowledge base</h2>
-          <ul class="space-y-2">
-            <li>
-              <a href="#" class="hover:text-pink-500"
-                >will put stuff here soon</a
-              >
-            </li>
-          </ul>
-        </section>
+    <nav class="mb-12">
+      <ul class="flex justify-center space-x-4 flex-wrap">
+        <li>
+          <button @click="section = 'home'" :class="{ 'text-pink-500': section === 'home' }"
+            class="hover:text-pink-500 transition-colors">
+            home
+          </button>
+        </li>
+        <li>
+          <button @click="section = 'skills'" :class="{ 'text-pink-500': section === 'skills' }"
+            class="hover:text-pink-500 transition-colors">
+            technologies
+          </button>
+        </li>
+        <li>
+          <button @click="section = 'projects'" :class="{ 'text-pink-500': section === 'projects' }"
+            class="hover:text-pink-500 transition-colors">
+            projects
+          </button>
+        </li>
+        <li>
+          <button @click="section = 'resources'" :class="{ 'text-pink-500': section === 'resources' }"
+            class="hover:text-pink-500 transition-colors">
+            resources
+          </button>
+        </li>
+        <li>
+          <button @click="section = 'contact'" :class="{ 'text-pink-500': section === 'contact' }"
+            class="hover:text-pink-500 transition-colors">
+            contact
+          </button>
+        </li>
+      </ul>
+    </nav>
 
-        <div class="hidden-message">
-          <p>
-            curious one, you've stumbled upon a puzzle: i am not alive, but i
-            grow; i don't have lungs, but i need air; i don't have a mouth, but
-            water kills me. what am i?
-          </p>
-        </div>
-
-        <div class="w-full flex justify-center">
-          <div id="ascii-container" class="my-4"></div>
-        </div>
-      </main>
-
-      <section class="mt-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="anime-container">
-            <img src="anime/eren.jpg" alt="Anime 1" class="w-full h-auto" />
-          </div>
-          <div class="anime-container">
-            <img src="/anime/gojo.jpg" alt="Anime 2" class="w-full h-auto" />
-          </div>
-          <div class="anime-container">
-            <img
-              src="/anime/todoroki.jpg"
-              alt="Anime 3"
-              class="w-full h-auto"
-            />
-          </div>
-          <div class="anime-container">
-            <img src="/anime/lelouch.jpg" alt="Anime 4" class="w-full h-auto" />
-          </div>
-          <div class="anime-container">
-            <img src="/anime/near.png" alt="Anime 5" class="w-full h-auto" />
-          </div>
-          <div class="anime-container">
-            <img src="/anime/sasuke.png" alt="Anime 6" class="w-full h-auto" />
-          </div>
-          <div class="anime-container">
-            <img src="/anime/makima.jpg" alt="Anime 7" class="w-full h-auto" />
-          </div>
-          <div class="anime-container">
-            <img src="/anime/faye.jpg" alt="Anime 8" class="w-full h-auto" />
-          </div>
-        </div>
+    <main>
+      <section x-show="section === 'home'" class="text-center">
+        <h2 class="text-3xl mb-4">ようこそ (Yōkoso)</h2>
+        <p class="mb-4">
+          TypeScript と Go の熱狂的なファン、Python と Zig
+          も。機械学習に挑戦中
+        </p>
+        <p>カフェインをコードに変えていきます</p>
       </section>
 
-      <footer class="mt-12 text-center">
-        <p>xp gained: <span x-text="xp"></span></p>
-        <p class="mt-4 text-xs">built with love and coffee</p>
-      </footer>
-    </div>
-  </body>
+      <section x-show="section === 'skills'" class="text-center">
+        <h2 class="text-3xl mb-4">tech</h2>
+        <ul class="space-y-2">
+          <li>typescript: necessary evil =(</li>
+          <li>go</li>
+          <li>python</li>
+          <li>learning zig</li>
+        </ul>
+      </section>
+
+      <section x-show="section === 'projects'" class="text-center">
+        <h2 class="text-3xl mb-4">active quests</h2>
+        <ul class="space-y-2">
+          <li>
+            - learning to teach machines how to think (to eventually get them
+            to think about thinking)
+          </li>
+          <li>
+            - crafting a life-gamification app (because reality needs better
+            stats overview)
+          </li>
+          <li>
+            - writing articles on logic & deductive reasoning (sherlock holmes
+            type shi)
+          </li>
+          <li class="mt-4">working at [redacted] (:3)</li>
+        </ul>
+      </section>
+
+      <section x-show="section === 'contact'" class="text-center">
+        <h2 class="text-3xl mb-4">let's connect</h2>
+        <p class="mb-4">got an interesting project or just want to chat??</p>
+        <form class="space-y-4" @submit="handleSubmit" action="https://formsubmit.co/tantaouisoftware@gmail.com"
+          method="POST">
+          <input type="text" name="name" placeholder="your name (or favorite anime character)"
+            class="bg-gray-800 p-2 w-full" required />
+          <input type="email" name="email" placeholder="email" class="bg-gray-800 p-2 w-full" required />
+          <textarea name="message" placeholder="your message (bonus points if you have a case for me to crack :3)"
+            class="bg-gray-800 p-2 w-full h-32" required></textarea>
+          <button type="submit" class="bg-[#00ff00] text-black px-4 py-2 hover:bg-pink-500 transition-colors">
+            send
+          </button>
+        </form>
+      </section>
+
+      <section x-show="section === 'resources'" class="text-center">
+        <h2 class="text-3xl mb-4">knowledge base</h2>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/"
+              class="hover:text-pink-500">Understanding-Convolutions</a>
+          </li>
+          <li>
+            <a href="https://arxiv.org/pdf/2408.16725v2" class="hover:text-pink-500">
+              Language Models Can Hear, Talk While Thinking in Streaming</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="hidden-message">
+        <p>
+          curious one, you've stumbled upon a puzzle: i am not alive, but i
+          grow; i don't have lungs, but i need air; i don't have a mouth, but
+          water kills me. what am i?
+        </p>
+      </div>
+
+      <div class="w-full flex justify-center">
+        <div id="ascii-container" class="my-4"></div>
+      </div>
+    </main>
+
+    <section class="mt-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="anime-container">
+          <img src="anime/eren.jpg" alt="Anime 1" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/gojo.jpg" alt="Anime 2" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/todoroki.jpg" alt="Anime 3" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/lelouch.jpg" alt="Anime 4" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/near.png" alt="Anime 5" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/sasuke.png" alt="Anime 6" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/makima.jpg" alt="Anime 7" class="w-full h-auto" />
+        </div>
+        <div class="anime-container">
+          <img src="/anime/faye.jpg" alt="Anime 8" class="w-full h-auto" />
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-12 text-center">
+      <p>xp gained: <span x-text="xp"></span></p>
+      <p class="mt-4 text-xs">
+        let me ask you this, do gods of death love apples?
+      </p>
+    </footer>
+  </div>
+</body>
+
 </html>
